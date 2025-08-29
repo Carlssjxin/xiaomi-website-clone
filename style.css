@@ -1,0 +1,161 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --orange: #ff6700; /* 小米主题色 */
+  --gray-light: #f5f5f5;
+  --text-dark: #333;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-dark);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.header {
+  background-color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--orange);
+}
+
+.menu {
+  font-size: 24px;
+}
+
+.banner {
+  position: relative;
+  height: 40vh; /* 高度自适应 */
+  overflow: hidden;
+}
+
+.banner-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-active {
+  opacity: 1;
+}
+
+.banner-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  margin: 0 5px;
+  opacity: 0.5;
+}
+
+.dot.active {
+  opacity: 1;
+}
+
+.quick-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4列 */
+  gap: 15px;
+  padding: 20px;
+  background: white;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+/* 图标用伪元素模拟 */
+.nav-item::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: var(--gray-light);
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+.products {
+  padding: 20px;
+  background: var(--gray-light);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列 */
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 12px;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.price {
+  color: var(--orange);
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* 媒体查询：屏幕宽度大于768px时 */
+@media (min-width: 768px) {
+  .quick-nav {
+    grid-template-columns: repeat(8, 1fr); /* 电脑版变8列 */
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr); /* 电脑版4列 */
+  }
+
+  .banner {
+    height: 500px; /* 电脑固定高度 */
+  }
+}
